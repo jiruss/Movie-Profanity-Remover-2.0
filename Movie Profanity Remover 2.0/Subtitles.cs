@@ -92,7 +92,9 @@ namespace Movie_Profanity_Remover_2._0
                         {
                             if (remove[j].Value > remove[j + 1].Key)
                             {
-                                remove[j] = new KeyValuePair<TimeSpan, TimeSpan>(remove[j].Key, remove[j + 1].Value);
+                                // Changed the following to include the beginning of the first found swear word
+                                // in the subtitle and the end of the last found word. 
+                                remove[j] = new KeyValuePair<TimeSpan, TimeSpan>(remove[j + 1].Key, remove[j].Value);
                                 remove.RemoveAt(j + 1);
                                 j--;
                                 RemoveCount--;
